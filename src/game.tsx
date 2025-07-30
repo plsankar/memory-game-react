@@ -11,7 +11,10 @@ import { useGamePlay } from "./provider/game-play-provider";
 const Game = () => {
     const { mode } = useGamePlay();
 
-    const board = useMemo(() => generateBoard(general, mode?.items || 8), []);
+    const board = useMemo(
+        () => generateBoard(general, mode?.items || 8),
+        [mode?.items]
+    );
 
     const [selected, setSelected] = useState([] as string[]);
     const [matched, setMatched] = useState([] as string[]);
